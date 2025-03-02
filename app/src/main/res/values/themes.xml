@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Project_6" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- <category_item name="colorPrimary">@color/my_light_primary</category_item> -->
     </style>
 
     <style name="Theme.Project_6" parent="Base.Theme.Project_6" />
