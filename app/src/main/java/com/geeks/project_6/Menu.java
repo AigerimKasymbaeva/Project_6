@@ -33,10 +33,10 @@ public class Menu extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         ArrayList<ctItemGray> item = new ArrayList<>();
-        item.add(new ctItemGray(R.drawable.ct_bg_gray, R.drawable.ct_burger_gray, "Burger"));
-        item.add(new ctItemGray(R.drawable.ct_bg_gray, R.drawable.ct_pizza_gray, "Pizza"));
-        item.add(new ctItemGray(R.drawable.ct_bg_gray, R.drawable.ct_salad_gray, "Salad"));
-        item.add(new ctItemGray(R.drawable.ct_bg_gray, R.drawable.ct_drink_gray, "Drink"));
+        item.add(new ctItemGray(R.drawable.ct_burger_gray, "Burger"));
+        item.add(new ctItemGray(R.drawable.ct_pizza_gray, "Pizza"));
+        item.add(new ctItemGray(R.drawable.ct_salad_gray, "Salad"));
+        item.add(new ctItemGray(R.drawable.ct_drink_gray, "Drink"));
 
         recyclerView = findViewById(R.id.ct_rv);
         ctAdapter = new ctAdapter(item);
@@ -47,8 +47,11 @@ public class Menu extends AppCompatActivity {
         item1.add(new typeItemGray(R.drawable.type_mix, "XL Combo", 5.0f, "25$"));
         item1.add(new typeItemGray(R.drawable.type_cheeseburger, "Cheeseburger", 4.5f, "12$"));
         item1.add(new typeItemGray(R.drawable.type_pizza, "Mexican Pizza", 4.7f, "17$"));
+        item1.add(new typeItemGray(R.drawable.type_pizza1, "Pepperoni Pizza", 4.5f, "14$"));
         item1.add(new typeItemGray(R.drawable.type_salad, "Salad", 4.0f, "6$"));
+        item1.add(new typeItemGray(R.drawable.type_salad1, "Orange Salad", 4.2f, "5$"));
         item1.add(new typeItemGray(R.drawable.type_cocacola, "Coca-Cola", 4.4f, "2$"));
+        item1.add(new typeItemGray(R.drawable.type_bubble_tea, "Bubble Tea", 3.0f, "4$"));
 
         recyclerView = findViewById(R.id.type_rv);
         typeAdapter = new typeAdapter(item1);
