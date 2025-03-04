@@ -1,103 +1,117 @@
-package com.geeks.project_6;
+package com.geeks.project_6
 
-import static com.geeks.project_6.R.color.darkRed;
+import android.content.Intent
+import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import com.geeks.project_6.R.color
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+class login : AppCompatActivity() {
+    var emailEt: EditText? = null
+    var passwordEt: EditText? = null
+    var loginBtn: Button? = null
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class login extends AppCompatActivity {
-
-    EditText emailEt;
-    EditText passwordEt;
-    Button loginBtn;
-
-    String email = "admin";
-    String password = "admin";
+    var email: String = "admin"
+    var password: String = "admin"
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-                    Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                    v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-                    return insets;
-        });
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        this.enableEdgeToEdge()
+        setContentView(R.layout.activity_login)
+        ViewCompat.setOnApplyWindowInsetsListener(
+            findViewById(R.id.main)
+        ) { v: View, insets: WindowInsetsCompat ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
 
-        emailEt = findViewById(R.id.email);
-        passwordEt = findViewById(R.id.password);
-        loginBtn = findViewById(R.id.login);
+        emailEt = findViewById(R.id.email)
+        passwordEt = findViewById(R.id.password)
+        loginBtn = findViewById(R.id.login)
 
-        emailEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
-
+        emailEt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, i: Int, i1: Int, i2: Int) {
             }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().length() > 0) {
-                    loginBtn.setBackgroundTintList(ContextCompat.getColorStateList(login.this, darkRed));
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (s.toString().trim { it <= ' ' }.length > 0) {
+                    loginBtn.setBackgroundTintList(
+                        ContextCompat.getColorStateList(
+                            this@login,
+                            color.darkRed
+                        )
+                    )
                 } else {
-                    loginBtn.setBackgroundTintList(ContextCompat.getColorStateList(login.this, R.color.gray));
+                    loginBtn.setBackgroundTintList(
+                        ContextCompat.getColorStateList(
+                            this@login,
+                            color.gray
+                        )
+                    )
                 }
             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            override fun afterTextChanged(s: Editable) {
             }
-        });
+        })
 
-        passwordEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int i, int i1, int i2) {
-
+        passwordEt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, i: Int, i1: Int, i2: Int) {
             }
 
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.toString().trim().length() > 0) {
-                    loginBtn.setBackgroundTintList(ContextCompat.getColorStateList(login.this, R.color.darkRed));
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (s.toString().trim { it <= ' ' }.length > 0) {
+                    loginBtn.setBackgroundTintList(
+                        ContextCompat.getColorStateList(
+                            this@login,
+                            color.darkRed
+                        )
+                    )
                 } else {
-                    loginBtn.setBackgroundTintList(ContextCompat.getColorStateList(login.this, R.color.gray));
+                    loginBtn.setBackgroundTintList(
+                        ContextCompat.getColorStateList(
+                            this@login,
+                            color.gray
+                        )
+                    )
                 }
             }
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
+            override fun afterTextChanged(s: Editable) {
             }
-        });
+        })
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (email.equals(emailEt.getText().toString()) && password.equals(passwordEt.getText().toString())) {
-                    Toast.makeText(login.this, "You have successfully registered", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(login.this, Menu.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(login.this, "Incorrect login or password", Toast.LENGTH_SHORT).show();
-                }
-                emailEt.setText("");
-                passwordEt.setText("");
+        loginBtn.setOnClickListener(View.OnClickListener {
+            if (email == emailEt.getText().toString() && password == passwordEt.getText()
+                    .toString()
+            ) {
+                Toast.makeText(
+                    this@login,
+                    "You have successfully registered",
+                    Toast.LENGTH_SHORT
+                ).show()
+                val intent = Intent(this@login, Menu::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    this@login,
+                    "Incorrect login or password",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        });
+            emailEt.setText("")
+            passwordEt.setText("")
+        })
     }
 }
