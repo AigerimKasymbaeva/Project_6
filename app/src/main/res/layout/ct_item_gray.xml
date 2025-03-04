@@ -8,6 +8,7 @@
     android:layout_marginHorizontal="5dp"
     android:orientation="horizontal"
     android:elevation="10dp"
+    android:foreground="?selectableItemBackgroundBorderless"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     
     <ImageView
